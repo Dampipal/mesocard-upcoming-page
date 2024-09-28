@@ -60,32 +60,35 @@
     </footer>
 
     <script>
-        // Set the date we're counting down to (30 days from now)
-        const countDownDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime();
+       // Set the date for launch (December 1, 2024, at 12:00 PM)
+const countDownDate = new Date('December 1, 2024 12:00:00').getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+    // Update the countdown display with padded values for better formatting
+    document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+    document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+    document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-        }
+    // If the countdown is over, display EXPIRED
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+    }
+}
 
-        // Update the countdown every 1 second
-        updateCountdown();
-        const x = setInterval(updateCountdown, 1000);
+// Update the countdown every 1 second
+updateCountdown();
+const x = setInterval(updateCountdown, 1000);
+
     </script>
 </body>
 </html>
